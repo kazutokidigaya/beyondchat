@@ -12,8 +12,6 @@ const app = express();
 app.use(cors());
 app.use(express.json()); // Middleware for JSON body parsing
 
-const PORT = process.env.PORT || 8000;
-
 // MongoDB Connection
 mongoose
   .connect(process.env.MONGO_URI)
@@ -58,7 +56,6 @@ if (process.env.NODE_ENV !== "test") {
   const HOST = "0.0.0.0"; // Bind to all interfaces for Render
   const server = app.listen(PORT, HOST, () => {
     console.log(`Server is running on port ${PORT}`);
-    connectDb();
     pingServer(); // Start the self-pinging function
   });
   server.keepAliveTimeout = 120000; // 2 minutes
