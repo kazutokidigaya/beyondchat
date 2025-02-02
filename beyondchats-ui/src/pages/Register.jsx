@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
 } from "firebase/auth";
-import { auth } from "../firebase"; // Ensure firebase is correctly imported
+import { auth } from "../firebase";
 import GoogleOAuthButton from "../components/GoogleOAuthButton";
 import { FaUser, FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -51,7 +50,6 @@ const Register = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 p-8">
-      <ToastContainer />
       <div className="bg-white shadow-lg text-sm rounded-3xl p-8 w-full max-w-md hover:shadow-xl transition duration-300">
         <h1 className="text-2xl font-bold mb-6 text-center text-blue-600">
           Register

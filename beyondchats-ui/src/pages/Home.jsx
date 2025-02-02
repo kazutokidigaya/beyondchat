@@ -79,7 +79,7 @@ const Home = () => {
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <img
               alt="App Screenshot"
-              src="https://res.cloudinary.com/dqela8lj8/image/upload/v1732818027/pi9ezepogjyesmexbcoq.webp"
+              src="https://res.cloudinary.com/dqela8lj8/image/upload/v1738442356/on6mzo6gduq2fy1kp50i.png"
               width={2432}
               height={1442}
               className="mb-[0%] rounded-xl shadow-2xl ring-1 ring-gray-900/10"

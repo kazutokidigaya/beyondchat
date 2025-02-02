@@ -6,31 +6,21 @@ import SetupOrganization from "./pages/SetupOrganization";
 import ChatbotIntegration from "./pages/ChatbotIntegration";
 import TestIntegration from "./pages/TestIntegration";
 import Login from "./pages/Login";
-import ProtectedRoute from "./components/ProtectedRoute"; // Import ProtectedRoute
-import { ToastContainer } from "react-toastify";
+import ProtectedRoute from "./components/ProtectedRoute";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <Router>
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar
-        newestOnTop
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-      />
+      <Toaster position="top-right" reverseOrder={false} />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/verify-email" element={<EmailVerification />} />
 
-        {/* PROTECTED ROUTES: Only Logged-in Users Can Access */}
+        {/* PROTECTED ROUTES */}
         <Route
           path="/setup-organization"
           element={

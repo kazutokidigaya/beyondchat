@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import ScrapeWebsite from "../components/ScrapeWebsite";
 import Navbar from "../components/Navbar";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 
 const SetupOrganization = () => {
   const [companyData, setCompanyData] = useState({
@@ -19,7 +19,7 @@ const SetupOrganization = () => {
 
   const handleProceed = () => {
     if (!scrapedUrl) {
-      toast.info("Please scrape a website first!");
+      toast.error("Please scrape a website first!");
       return;
     }
     navigate("/chatbot-integration", { state: { url: scrapedUrl } });
@@ -31,9 +31,13 @@ const SetupOrganization = () => {
   const handleFetchMeta = async () => {
     setLoading(true);
     try {
-      const response = await axios.post("http://localhost:8000/api/scrape/", {
-        url: companyData.website,
-      });
+      const response = await axios.post(
+        "https://beyondchat.onrender.com/api/scrape/",
+        {
+          url: companyData.website,
+        }
+      );
+      toast.success(`Meta Data Fetched successfully for ${companyData.name}`);
       setCompanyData({ ...companyData, description: response.data.data.text });
     } catch (error) {
       console.error("Failed to fetch website metadata", error);

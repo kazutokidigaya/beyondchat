@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { auth, signInWithEmailAndPassword } from "../firebase";
 import GoogleOAuthButton from "../components/GoogleOAuthButton";
 import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -38,7 +37,6 @@ const Login = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 p-8">
-      <ToastContainer />
       <div className="bg-white shadow-lg text-sm rounded-3xl p-8 w-full max-w-md hover:shadow-xl transition duration-300">
         <h1 className="text-2xl font-bold mb-6 text-center text-blue-600">
           Log In

@@ -10,7 +10,6 @@ const TestIntegration = () => {
   const checkIntegration = () => {
     setLoading(true);
 
-    // Simulating integration check delay
     setTimeout(() => {
       const isSuccess = Math.random() > 0.5;
       setIntegrationSuccess(isSuccess);
@@ -46,7 +45,9 @@ const TestIntegration = () => {
           {/* Show Success or Error UI based on result */}
           <div className="mt-6 ">
             {integrationSuccess === true && <SuccessUI />}
-            {integrationSuccess === false && <ErrorUI />}
+            {integrationSuccess === false && (
+              <ErrorUI checkIntegration={checkIntegration} />
+            )}
           </div>
         </div>
       </div>

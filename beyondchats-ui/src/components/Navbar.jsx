@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase"; // Import Firebase auth
 import { signOut } from "firebase/auth";
 import { FaSignOutAlt, FaHome } from "react-icons/fa";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
   const [user, setUser] = useState(null);
@@ -19,6 +20,7 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       await signOut(auth);
+      toast.success("Logged Out Successfully");
       navigate("/");
     } catch (error) {
       console.error("Logout failed:", error);

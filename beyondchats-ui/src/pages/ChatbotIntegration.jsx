@@ -3,7 +3,7 @@ import axios from "axios";
 import TrainChatbot from "../components/TrainChatbot";
 import { useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 
 const ChatbotIntegration = () => {
   const [userQuestion, setUserQuestion] = useState("");
@@ -18,7 +18,7 @@ const ChatbotIntegration = () => {
 
   const handleCopy = () => {
     navigator.clipboard.writeText(chatbotCode);
-    toast.info("Chatbot integration script copied to clipboard!");
+    toast.success("Chatbot integration script copied to clipboard!");
   };
 
   const testChatbot = async () => {
@@ -29,7 +29,7 @@ const ChatbotIntegration = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/chatbot/test",
+        "https://beyondchat.onrender.com/api/chatbot/test",
         { url: url, message: userQuestion }
       );
       setChatbotResponse(response.data.response);
@@ -47,11 +47,11 @@ const ChatbotIntegration = () => {
 
     try {
       await axios.post(
-        "http://localhost:8000/api/email/send-integration-email",
+        "https://beyondchat.onrender.com/api/email/send-integration-email",
         { email }
       );
-      setEmailSent(true);
       toast.success("Integration instructions sent successfully.");
+      setEmailSent(true);
     } catch (error) {
       console.error("Email sending failed:", error);
       toast.error("Email sending failed");

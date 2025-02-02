@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const ScrapeWebsite = ({ setScrapedUrl }) => {
   const [url, setUrl] = useState("");
@@ -11,10 +12,13 @@ const ScrapeWebsite = ({ setScrapedUrl }) => {
   const handleScrape = async () => {
     setLoading(true);
     try {
-      const response = await axios.post("http://localhost:8000/api/scrape/", {
-        url,
-      });
-
+      const response = await axios.post(
+        "https://beyondchat.onrender.com/api/scrape/",
+        {
+          url,
+        }
+      );
+      toast.success(`${url} Scraped successfully`);
       setData(response.data.data);
       setScrapedUrl(url);
       setError("");

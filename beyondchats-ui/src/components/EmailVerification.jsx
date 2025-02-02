@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
-import { toast } from "react-toastify";
 import { FaCheckCircle } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import toast from "react-hot-toast";
 
 const EmailVerification = () => {
   const location = useLocation();
