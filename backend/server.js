@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import scrapeRoutes from "./routes/scrapeRoutes.js";
 import chatbotRoutes from "./routes/chatbotRoutes.js";
 import emailRoutes from "./routes/emailRoutes.js";
+import axios from "axios";
 
 dotenv.config();
 const app = express();
