@@ -1,14 +1,18 @@
 import React, { useEffect } from "react";
-import confetti from "canvas-confetti";
 import { useNavigate } from "react-router-dom";
 
 const SuccessUI = () => {
   useEffect(() => {
-    confetti({
-      particleCount: 100,
-      spread: 70,
-      origin: { y: 0.6 },
-    });
+    const triggerConfetti = async () => {
+      const confetti = (await import("canvas-confetti")).default;
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 },
+      });
+    };
+
+    triggerConfetti();
   }, []);
 
   const navigate = useNavigate();
@@ -21,7 +25,7 @@ const SuccessUI = () => {
       <p className="text-gray-700">Your chatbot is now live.</p>
       <div className="mt-4 flex flex-col gap-4">
         <button
-          className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 cursor-pointer "
+          className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 cursor-pointer"
           onClick={() => navigate("/")}
         >
           Explore Admin Panel
